@@ -8,7 +8,6 @@ namespace ECommerce.Helpers
     public class JwtTokenGenerator
     {
         private readonly IConfiguration _config ;
-
         public JwtTokenGenerator(IConfiguration config)
         {
             _config = config;

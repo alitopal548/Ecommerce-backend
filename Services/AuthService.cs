@@ -60,7 +60,5 @@ namespace ECommerce.Services
 
         public async Task<User> GetUserByUsernameAsync(string username)
             => await _context.Users.SingleOrDefaultAsync(u => u.Username == username);
-
-
     }
 }

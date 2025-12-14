@@ -3,8 +3,6 @@ using ECommerce.Dto;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-
-
 namespace ECommerce.Controllers
 {
     [Route("api/[controller]")]
@@ -43,7 +41,5 @@ namespace ECommerce.Controllers
         {
             return _authManager.AdminEndpoint();
         }
-
     }
-
 }

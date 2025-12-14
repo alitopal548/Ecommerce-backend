@@ -22,8 +22,8 @@ namespace ECommerce.Data
 
             // Order - OrderItem 1 e çok
             modelBuilder.Entity<Order>()
-                .HasMany(o => o.Items)// bir sipaerişin biren çok orderitemi olabilir
-                .WithOne(oi => oi.Order)// her orderitem bir siparişe aittir
+                .HasMany(o => o.Items)
+                .WithOne(oi => oi.Order)
                 .HasForeignKey(oi => oi.OrderId)
                 .OnDelete(DeleteBehavior.Cascade);
 
@@ -40,7 +40,5 @@ namespace ECommerce.Data
                 .HasForeignKey(o => o.UserId);
 
         }
-
-
     }
 }

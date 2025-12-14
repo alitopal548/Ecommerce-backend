@@ -10,5 +10,4 @@
         public int ProductId { get; set; }  // Ürün ID'si
         public int Quantity { get; set; }   // Kaç adet alınmış
     }
-
 }

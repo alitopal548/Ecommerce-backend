@@ -12,7 +12,6 @@ namespace ECommerce.Business
     {
         private readonly AppDbContext _context;
         private readonly IEmailService _emailService;
-
         public RegistrationBusiness(AppDbContext context, IEmailService emailService)
         {
             _context = context;
@@ -90,9 +89,6 @@ namespace ECommerce.Business
             await _context.SaveChangesAsync();
 
             return null;
-
-
         }
-
     }
 }

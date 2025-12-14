@@ -1,7 +1,5 @@
 ﻿using ECommerce.Dto;
-using ECommerce.Models;
 using ECommerce.Services;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
@@ -10,7 +8,6 @@ namespace ECommerce.Business
     public class AuthBusiness
     {
         private readonly AuthService _authService; 
-
         public AuthBusiness( AuthService authService )
         {
             _authService = authService;
@@ -39,7 +36,6 @@ namespace ECommerce.Business
             try
             {
                 var token = await _authService.LoginAsync(dto); //servise git, login isteği at token al
-
                 var user = await _authService.GetUserByUsernameAsync(dto.Username);
 
                 return new OkObjectResult( new
@@ -58,7 +54,6 @@ namespace ECommerce.Business
         {
             var username = user.Identity?.Name ?? "Bilinmeyen";
             return new OkObjectResult($"Merhaba {username} , profil sayfasına hoşgeldin");
-
         }
 
         public IActionResult AdminEndpoint()

@@ -10,7 +10,6 @@ namespace ECommerce.Controllers
     public class CategoryController : ControllerBase
     {
         private readonly CategoryBusiness _business;
-
         public CategoryController(CategoryBusiness business)
         {
             _business = business;
@@ -44,7 +43,6 @@ namespace ECommerce.Controllers
             return CreatedAtAction(nameof(GetCategoryById), new { id = created.Id }, created);
         }
 
-
         [Authorize(Roles = "admin")]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateCategory(int id, [FromBody] UpdateCategoryDto dto)
@@ -67,7 +65,6 @@ namespace ECommerce.Controllers
 
             return Ok("Kategori ve ilişkili tüm alt kategori ve ürünler silindi.");
         }
-
 
         [HttpGet("{categoryId}/subcategories")]
         public async Task<IActionResult> GetSubCategories(int categoryId)

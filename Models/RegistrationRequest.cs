@@ -11,8 +11,5 @@ namespace ECommerce.Models
         public string Code { get; set; } = string.Empty;
         public DateTime CodeExpiresAt { get; set; }
         public DateTime RequestedAt { get; set; } = DateTime.UtcNow;
-
-
-
     }
 }

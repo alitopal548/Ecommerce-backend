@@ -1,7 +1,6 @@
 ﻿using ECommerce.Data;
 using ECommerce.Dto;
 using ECommerce.Models;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace ECommerce.Business
@@ -22,7 +21,6 @@ namespace ECommerce.Business
                                  .Include(c => c.SubCategories)
                                     .ThenInclude(sc => sc.Products)
                                  .ToListAsync();
-
         }
 
         public async Task<Category?> GetCategoryByIdAsync(int id)
@@ -39,6 +37,7 @@ namespace ECommerce.Business
             var category = new Category { Name = dto.Name };
             _context.Categories.Add(category);
             await _context.SaveChangesAsync();
+
             return category;
         }
         public async Task<bool> UpdateCategoryAsync(int id, UpdateCategoryDto dto)
@@ -48,6 +47,7 @@ namespace ECommerce.Business
 
             category.Name= dto.Name;
             await _context.SaveChangesAsync();
+
             return true;
 
         }
@@ -70,13 +70,13 @@ namespace ECommerce.Business
             _context.Categories.Remove(category);
 
             await _context.SaveChangesAsync();
+
             return true;
         }
 
         #endregion
 
         #region SubCategory İslemleri --------------
-
         public async Task<List<SubCategory>> GetSubCategoriesAsync(int categoryId)
         {
             return await _context.SubCategories
@@ -112,6 +112,7 @@ namespace ECommerce.Business
             sub.Name= dto.Name;
             sub.CategoryId= dto.CategoryId;
             await _context.SaveChangesAsync();
+
             return true;
         }
 
@@ -125,11 +126,11 @@ namespace ECommerce.Business
             _context.Products.RemoveRange(subCategory.Products);
             _context.SubCategories.Remove(subCategory);
             await _context.SaveChangesAsync();
+
             return true;
         }
 
         #endregion
-
         public async Task<List<Product>> GetProductsBySubCategoryAsync(int subCategoryId)
         {
             return await _context.Products
@@ -138,6 +139,5 @@ namespace ECommerce.Business
                                      .ThenInclude(sc=>sc.Category)
                                  .ToListAsync();
         }
-
     }
 }

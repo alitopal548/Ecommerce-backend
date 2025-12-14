@@ -9,7 +9,6 @@ namespace ECommerce.Controllers
     public class RegistrationController : ControllerBase
     {
         private readonly RegistrationBusiness _business;
-
         public RegistrationController(RegistrationBusiness business)
         {
             _business = business;

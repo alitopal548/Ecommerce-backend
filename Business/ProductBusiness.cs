@@ -9,7 +9,6 @@ namespace ECommerce.Business
     {
         private readonly AppDbContext _context;
         private readonly string _uploadPath;
-
         public ProductBusiness(AppDbContext context)
         {
             _context = context;
@@ -123,7 +122,6 @@ namespace ECommerce.Business
             await _context.SaveChangesAsync();
             return true;
         }
-
         public async Task<bool> DeleteProductAsync(int id)
         {
             var product = await _context.Products.FindAsync(id);
@@ -144,6 +142,5 @@ namespace ECommerce.Business
             await _context.SaveChangesAsync();
             return true;
         }
-
     }
 }

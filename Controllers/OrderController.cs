@@ -11,7 +11,6 @@ namespace ECommerce.Controllers
     public class OrderController : ControllerBase
     {
         private readonly OrderServices _orderServices;
-
         public OrderController(OrderServices orderServices)
         {
             _orderServices = orderServices;
@@ -24,8 +23,8 @@ namespace ECommerce.Controllers
 
             if (result == "Sipariş başarıyla oluşturuldu.")
                 return Ok(result);
-            return BadRequest(result);
 
+            return BadRequest(result);
         }
 
         [HttpGet]
@@ -77,6 +76,5 @@ namespace ECommerce.Controllers
 
             return NotFound(result);
         }
-
     }
 }

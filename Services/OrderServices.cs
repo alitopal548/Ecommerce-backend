@@ -59,7 +59,6 @@ namespace ECommerce.Services
             await _context.SaveChangesAsync();
 
             return "Sipariş başarıyla oluşturuldu.";
-
         }
 
         public async Task<ServiceResult> GetAllOrdersAsync()
@@ -142,7 +141,6 @@ namespace ECommerce.Services
                     Message = "Sipariş Bulunamadı"
                 };
             }
-        
 
             _context.Orders.Remove(order); //siparişi sil
             await _context.SaveChangesAsync();
@@ -151,8 +149,7 @@ namespace ECommerce.Services
             {
                 Success = true,
                 Message = "Sipariş Başarıyla Silindi"
-            };
-                 
+            };    
         }
     }
 }

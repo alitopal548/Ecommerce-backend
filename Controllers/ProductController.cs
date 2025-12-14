@@ -3,8 +3,6 @@ using ECommerce.Dto;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-
-
 namespace ECommerce.Controllers
 {
     [ApiController]
@@ -12,7 +10,6 @@ namespace ECommerce.Controllers
     public class ProductController : ControllerBase
     {
         private readonly ProductBusiness _business;
-
         public ProductController(ProductBusiness business)
         {
             _business = business;
@@ -44,7 +41,6 @@ namespace ECommerce.Controllers
                 return BadRequest("Ürün oluşturulamadı. Lütfen alanları kontrol ediniz.");
 
             return CreatedAtAction(nameof(GetProductById), new { id = createdProduct.Id }, createdProduct);
-
         }
 
         [Authorize(Roles = "admin")] // sadece admin erişebilir, ürün güncelle
@@ -59,16 +55,14 @@ namespace ECommerce.Controllers
             return Ok("Ürün Başarıyla Güncellendi");
         }
 
-
         [Authorize(Roles = "admin")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProduct(int id)
         {
-
             var deletedProduct = await _business.DeleteProductAsync(id);
+
             if (!deletedProduct)
                 return NotFound("Silinecek ürün bulunamadı.");
-
 
             return Ok("Ürün başarıyla silindi.");
         }
@@ -78,11 +72,11 @@ namespace ECommerce.Controllers
         public async Task<IActionResult> DeleteProductImage(int imageId)
         {
             var deletedImage = await _business.DeleteProductImageAsync(imageId);
+
             if (!deletedImage)
                 return NotFound("Resim Bulunamadı");
 
             return Ok("Resim Başarıyla Silindi");
-
         }
     }
 }

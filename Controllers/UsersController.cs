@@ -11,7 +11,6 @@ namespace ECommerce.Controllers
     public class UsersController : ControllerBase
     {
         private readonly UsersBusiness _business;
-
         public UsersController(UsersBusiness business)
         {
             _business = business;
@@ -21,6 +20,7 @@ namespace ECommerce.Controllers
         public async Task<ActionResult<IEnumerable<UserDto>>> GetUsers()
         {
             var users = await _business.GetUsersAsync();
+
             return Ok(users);
         }
 
@@ -48,7 +48,5 @@ namespace ECommerce.Controllers
 
             return NoContent();
         }
-
-
     }
 }

@@ -59,7 +59,5 @@ namespace ECommerce.Business
             BadRequest,
             NotFound
         }
-
-
     }
 }
