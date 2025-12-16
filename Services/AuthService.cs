@@ -22,7 +22,7 @@ namespace ECommerce.Services
         {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == dto.Username);
             if (user == null)
-                throw new Exception("Kullanıcı Bulunamadı.");
+                throw new Exception("Kullanıcı bulunamadı.");
 
             using var hmac = new HMACSHA512(user.PasswordSalt); //şifreyi aynı salt ile tekrar hashle
             var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(dto.Password));
@@ -30,16 +30,16 @@ namespace ECommerce.Services
             for(int i=0; i<computedHash.Length; i++)
             {
                 if (computedHash[i] != user.PasswordHash[i])
-                    throw new Exception("Şifre Hatalı. Lütfen tekrar deneyiniz.");
+                    throw new Exception("Girdiğiniz şifre hatalı. Lütfen tekrar deneyiniz.");
             }
 
-            return _tokenGenerator.GenerateToken(user.Id ,user.Username, user.Role); //giriş başarılıysa token üret
+            return _tokenGenerator.GenerateToken(user.Id ,user.Username, user.Role);
         }
 
         public async Task<string> RegisterAsync(UserRegisterDto dto)
         {
             if (await _context.Users.AnyAsync(u => u.Username == dto.Username))
-                throw new Exception("Kullanıcı adı mevcut yeni bir kullanıcı adı deneyiniz");
+                throw new Exception("Girdiğiniz kullanıcı adı zaten mevcut yeni bir kullanıcı adı giriniz.");
 
             using var hmac = new HMACSHA512();
 

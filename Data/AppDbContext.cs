@@ -20,25 +20,21 @@ namespace ECommerce.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            // Order - OrderItem 1 e çok
             modelBuilder.Entity<Order>()
                 .HasMany(o => o.Items)
                 .WithOne(oi => oi.Order)
                 .HasForeignKey(oi => oi.OrderId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            // OrderItem - Product 
             modelBuilder.Entity<OrderItem>()
                 .HasOne(oi => oi.Product)
                 .WithMany()
                 .HasForeignKey(oi => oi.ProductId);
 
-            // Order - User 
             modelBuilder.Entity<Order>()
                 .HasOne(o => o.User)
                 .WithMany()
                 .HasForeignKey(o => o.UserId);
-
         }
     }
 }

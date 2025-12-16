@@ -66,12 +66,12 @@ namespace ECommerce.Services
             var orders=  await _context.Orders // siparişleri ve içindeki orderitemları ve onlara ait productları birlikte yükle
                 .Include(o => o.Items)//siparişini çindeki ürünleri de getir
                 .ThenInclude(i => i.Product) // ürün bilgilerini de dahil et
-                .ToListAsync(); // listele
+                .ToListAsync();
 
             return new ServiceResult
             {
                 Success = true,
-                Message = "Tüm Siparişler Başarıyla Getirildi",
+                Message = "Tüm siparişler başarıyla getirildi",
                 Data = orders
             };
         }
@@ -89,14 +89,14 @@ namespace ECommerce.Services
                 return new ServiceResult
                 {
                     Success = false,
-                    Message = "Sipariş Bulunamadı"
+                    Message = "Sipariş bulunamadı."
                 };
             }
 
             return new ServiceResult
             {
                 Success = true,
-                Message = "Sipariş Başarıyla Getirildi",
+                Message = "Sipariş başarıyla getirildi.",
                 Data = order
             };
         }
@@ -110,7 +110,7 @@ namespace ECommerce.Services
                 return new ServiceResult
                 {
                     Success = false,
-                    Message = "Sipariş Bulunamadı"
+                    Message = "Sipariş bulunamadı"
                 };
 
             _context.OrderItems.RemoveRange(exitingOrder.Items);
@@ -125,7 +125,7 @@ namespace ECommerce.Services
             return new ServiceResult
             {
                 Success = true,
-                Message = "Sipariş Başarıyla Güncellendi"
+                Message = "Sipariş başarıyla güncellendi"
             };
         }
 
@@ -138,7 +138,7 @@ namespace ECommerce.Services
                 return new ServiceResult
                 {
                     Success = false,
-                    Message = "Sipariş Bulunamadı"
+                    Message = "Sipariş bulunamadı"
                 };
             }
 
@@ -148,7 +148,7 @@ namespace ECommerce.Services
             return new ServiceResult
             {
                 Success = true,
-                Message = "Sipariş Başarıyla Silindi"
+                Message = "Sipariş başarıyla silindi"
             };    
         }
     }
