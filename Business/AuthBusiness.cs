@@ -17,7 +17,7 @@ namespace ECommerce.Business
         {
             if (string.IsNullOrWhiteSpace(dto.Username) || string.IsNullOrWhiteSpace(dto.Password))
             {
-                return new BadRequestObjectResult(new {error="Kullanıcı adı ve şifre girilmelidir." });
+                return new BadRequestObjectResult(new {error=" Kullanıcı adı ve şifre girilmelidir. " });
             }
 
             try
@@ -35,7 +35,7 @@ namespace ECommerce.Business
         {
             try
             {
-                var token = await _authService.LoginAsync(dto); //servise git, login isteği at token al
+                var token = await _authService.LoginAsync(dto);
                 var user = await _authService.GetUserByUsernameAsync(dto.Username);
 
                 return new OkObjectResult( new
@@ -46,19 +46,19 @@ namespace ECommerce.Business
             }
             catch (Exception ex)
             {
-                return new UnauthorizedObjectResult( new { error = ex.Message });// giriş başarısızsa 401
+                return new UnauthorizedObjectResult( new { error = ex.Message });
             }
         }
 
         public IActionResult GetProfile(ClaimsPrincipal user)
         {
             var username = user.Identity?.Name ?? "Bilinmeyen";
-            return new OkObjectResult($"Merhaba {username} , profil sayfasına hoşgeldin");
+            return new OkObjectResult($"Merhaba {username}, Profil sayfasına hoşgeldin");
         }
 
         public IActionResult AdminEndpoint()
         {
-            return new OkObjectResult("Bu endpoint'e sadece admin erişebiliyooo");
+            return new OkObjectResult("Bu endpoint'e sadece Admin rolüne sahip Kullanıcı erişebilir.");
         }
     }
 }

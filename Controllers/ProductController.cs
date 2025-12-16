@@ -43,16 +43,16 @@ namespace ECommerce.Controllers
             return CreatedAtAction(nameof(GetProductById), new { id = createdProduct.Id }, createdProduct);
         }
 
-        [Authorize(Roles = "admin")] // sadece admin erişebilir, ürün güncelle
+        [Authorize(Roles = "admin")]
         [HttpPut("{id}")]
         public async Task<IActionResult> ProductUpdate(int id, [FromForm] UpdateProductDto dto)
         {
             bool updatedProduct = await _business.UpdateProductAsync(id, dto);
 
             if (!updatedProduct)
-                return NotFound("Güncellenecek Ürün Bulunamadı");
+                return NotFound("Güncellenecek ürün bulunamadı");
 
-            return Ok("Ürün Başarıyla Güncellendi");
+            return Ok("Ürün başarıyla güncellendi");
         }
 
         [Authorize(Roles = "admin")]
@@ -74,9 +74,9 @@ namespace ECommerce.Controllers
             var deletedImage = await _business.DeleteProductImageAsync(imageId);
 
             if (!deletedImage)
-                return NotFound("Resim Bulunamadı");
+                return NotFound("Resim bulunamadı");
 
-            return Ok("Resim Başarıyla Silindi");
+            return Ok("Resim başarıyla silindi");
         }
     }
 }

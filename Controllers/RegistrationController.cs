@@ -21,7 +21,7 @@ namespace ECommerce.Controllers
             if (error != null)
                 return BadRequest(error);
 
-            return Ok(new { Message = "Kayıt kodu e-posta adresinize gönderildi." });
+            return Ok(new { Message = "Kayıt kodu e-mail adresinize gönderildi." });
         }
 
         [HttpPost("confirm-register")]

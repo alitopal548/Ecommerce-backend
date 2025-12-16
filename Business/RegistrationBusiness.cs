@@ -21,7 +21,7 @@ namespace ECommerce.Business
         public async Task<string?> RequestRegisterAsync(RequestRegisterDto dto)
         {
             if (string.IsNullOrWhiteSpace(dto.Username) || string.IsNullOrWhiteSpace(dto.Email) || string.IsNullOrWhiteSpace(dto.Password))
-                    return "Kullanıcı adı, Email ve Şifre alanları zorunludur.";
+                    return "Kullanıcı adı, Email ve Şifre alanları zorunludur, lütfen boş bırakmayınız.";
 
             bool userExists = await _context.Users
                 .AnyAsync(u=>u.Username==dto.Username || u.Email==dto.Email);
